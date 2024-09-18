@@ -22,15 +22,15 @@ app.post('/send', (req, res) => {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'aadarsh112010@gmail.com', // Replace with your Gmail address
-      pass: 'vwme ymli qcfz qahj',  // Replace with your Gmail App Password
+      user: 'aadarsh112010@gmail.com',
+      pass: 'vwme ymli qcfz qahj',
     },
   });
 
   // Define email options
   let mailOptions = {
-    from: email, // Sender's email
-    to: 'banadab330@marchub.com', // Your Gmail address to receive the email
+    from: email,
+    to: 'aadarsh112010@gmail.com',
     subject: `New message from ${name}`,
     text: `You have a new message from ${name} (${email}):\n\n${message}`,
   };
@@ -38,10 +38,10 @@ app.post('/send', (req, res) => {
   // Send the email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email:', error); // Log the error
-      return res.status(500).send('Failed to send email: ' + error.message);  // Return the error as a response
+      console.error('Error sending email:', error);
+      return res.status(500).send('Failed to send email: ' + error.message);
     }
-    console.log('Email sent:', info.response); // Log the success response
+    console.log('Email sent:', info.response);
     res.status(200).send('Email sent successfully');
   });
 });
